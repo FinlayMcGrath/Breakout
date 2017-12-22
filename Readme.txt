@@ -5,3 +5,4 @@ Format for bricks.txt is "x y maxhits". Max hits represents how many hits a bric
 Some different max hits have different colours.
 3D camera controls have been left in though its best not to use them. If they are used by accident press SPACE to reset.
 Press ESCAPE to quit. 
+The exe can be found in x64/release

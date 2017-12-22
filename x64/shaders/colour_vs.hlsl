@@ -2,11 +2,16 @@
 // Simple geometry pass
 // texture coordinates and normals will be ignored.
 
-cbuffer MatrixBuffer : register(cb0)
+cbuffer MatrixBuffer : register(b0)
 {
 	matrix worldMatrix;
 	matrix viewMatrix;
 	matrix projectionMatrix;
+};
+
+cbuffer ColourBuffer : register(b1)
+{
+	float4 colour;
 };
 
 struct InputType
@@ -21,6 +26,7 @@ struct OutputType
 	float4 position : SV_POSITION;
 	float2 tex : TEXCOORD0;
 	float3 normal : NORMAL;
+	float4 colour : TEXCOORD1;
 };
 
 OutputType main(InputType input)
@@ -37,7 +43,6 @@ OutputType main(InputType input)
 	output.position = mul(output.position, viewMatrix);
 	output.position = mul(output.position, projectionMatrix);
 
-
 	// Store the texture coordinates for the pixel shader.
 	output.tex = input.tex;
 
@@ -46,6 +51,9 @@ OutputType main(InputType input)
 
 	// Normalize the normal vector.
 	output.normal = normalize(output.normal);
+
+	//set colour
+	output.colour = colour;
 
 	return output;
 }
