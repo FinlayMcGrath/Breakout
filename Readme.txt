@@ -1,3 +1,4 @@
+Written in C++ in DirectX 11 for Windows 10 in Visual Studio 2015.
 Game will instantly run. A and D to move the paddle left and right.
 Bricks.txt can be edited to add extra bricks to the game though there is a current 10 by 4 brick layout already. 
 Format for bricks.txt is "x y maxhits". Max hits represents how many hits a brick needs to be destroyed. 
