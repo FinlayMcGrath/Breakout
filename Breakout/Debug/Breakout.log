@@ -1,0 +1,3 @@
+﻿E:\Users\Finlay\Documents\Programming\Applications\Ninja Kiwi\Breakout\shaders\colour_ps.hlsl(12,30-40): error X4502: invalid vs_5_0 output semantic 'SV_TARGET'
+  
+  compilation failed; no code produced
