@@ -27,6 +27,7 @@ public:
 	XMFLOAT4 GetColour() { return m_colour; };
 protected:
 	void SetAabbPoints();
+	void SetPosition(XMFLOAT3 position) { m_position = position };
 	BaseMesh* m_mesh;
 	XMFLOAT3 m_position, m_rotation, m_scale, m_velocity;
 	Aabb* m_aabb;

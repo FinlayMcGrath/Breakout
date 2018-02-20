@@ -1,1 +1,51 @@
-﻿
+﻿  BreakoutApp.cpp
+e:\users\finlay\documents\programming\applications\ninja kiwi\breakout\breakout\gameobject.h(30): error C2143: syntax error: missing ';' before '}'
+e:\users\finlay\documents\programming\applications\ninja kiwi\breakout\breakout\breakoutapp.cpp(14): error C2679: binary '=': no operator found which takes a right-hand operand of type 'std::shared_ptr<Brick>' (or there is no acceptable conversion)
+  d:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(1436): note: could be 'std::unique_ptr<Brick,std::default_delete<_Ty>> &std::unique_ptr<_Ty,std::default_delete<_Ty>>::operator =(const std::unique_ptr<_Ty,std::default_delete<_Ty>> &)'
+          with
+          [
+              _Ty=Brick
+          ]
+  d:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(1377): note: or       'std::unique_ptr<Brick,std::default_delete<_Ty>> &std::unique_ptr<_Ty,std::default_delete<_Ty>>::operator =(std::unique_ptr<_Ty,std::default_delete<_Ty>> &&) noexcept'
+          with
+          [
+              _Ty=Brick
+          ]
+  d:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(1303): note: or       'std::unique_ptr<Brick,std::default_delete<_Ty>> &std::unique_ptr<_Ty,std::default_delete<_Ty>>::operator =(std::nullptr_t) noexcept'
+          with
+          [
+              _Ty=Brick
+          ]
+  e:\users\finlay\documents\programming\applications\ninja kiwi\breakout\breakout\breakoutapp.cpp(14): note: while trying to match the argument list '(std::unique_ptr<Brick,std::default_delete<_Ty>>, std::shared_ptr<Brick>)'
+          with
+          [
+              _Ty=Brick
+          ]
+  Ball.cpp
+e:\users\finlay\documents\programming\applications\ninja kiwi\breakout\breakout\gameobject.h(30): error C2143: syntax error: missing ';' before '}'
+  Generating Code...
+  Compiling...
+  Brick.cpp
+e:\users\finlay\documents\programming\applications\ninja kiwi\breakout\breakout\gameobject.h(30): error C2143: syntax error: missing ';' before '}'
+  Generating Code...
+  Compiling...
+  File.cpp
+e:\users\finlay\documents\programming\applications\ninja kiwi\breakout\breakout\gameobject.h(30): error C2143: syntax error: missing ';' before '}'
+e:\users\finlay\documents\programming\applications\ninja kiwi\breakout\breakout\file.cpp(56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  Compiling...
+  GameObject.cpp
+e:\users\finlay\documents\programming\applications\ninja kiwi\breakout\breakout\gameobject.h(30): error C2143: syntax error: missing ';' before '}'
+  Generating Code...
+  Compiling...
+  Main.cpp
+e:\users\finlay\documents\programming\applications\ninja kiwi\breakout\breakout\gameobject.h(30): error C2143: syntax error: missing ';' before '}'
+  Generating Code...
+  Compiling...
+  Paddle.cpp
+e:\users\finlay\documents\programming\applications\ninja kiwi\breakout\breakout\gameobject.h(30): error C2143: syntax error: missing ';' before '}'
+  Generating Code...
+  Compiling...
+  System.cpp
+e:\users\finlay\documents\programming\applications\ninja kiwi\breakout\breakout\gameobject.h(30): error C2143: syntax error: missing ';' before '}'
+  Generating Code...

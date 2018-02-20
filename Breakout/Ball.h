@@ -18,5 +18,6 @@ private:
 	SphereMesh* m_mesh;
 	Colour m_colourCode;
 	bool m_turning;
+	XMFLOAT3 m_oldPosition;
 };
 

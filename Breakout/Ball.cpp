@@ -28,6 +28,8 @@ void Ball::Initialise(D3D * direct3D, XMFLOAT3 position)
 
 bool Ball::Update(float deltaTime)
 {
+	m_oldPosition = GetPosition();
+
 	GameObject::Update(deltaTime);
 
 	//check screen bounds
@@ -64,4 +66,5 @@ void Ball::Hit(int colour = -1)
 void Ball::Hit()
 {
 	m_velocity.y *= -1;
+	SetPosition(m_oldPosition);
 }

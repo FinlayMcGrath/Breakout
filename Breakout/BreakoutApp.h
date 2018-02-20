@@ -3,6 +3,7 @@
 
 // Includes
 #include <vector>
+#include <memory>
 #include "baseapplication.h"
 #include "TextureShader.h"
 #include "ColourShader.h"
@@ -10,6 +11,7 @@
 #include "Ball.h"
 #include "Paddle.h"
 #include "File.h"
+#include "Sprite.h"
 
 using namespace std;
 
@@ -26,6 +28,7 @@ private:
 	bool Update();
 	bool Render();
 	void RenderScene();
+	void RenderHUD();
 	void HandleInput();
 	void CheckCollisions();
 	void Cleanup();
@@ -38,13 +41,18 @@ private:
 
 	//gameobjects
 	vector<Brick*> m_bricks;
+	unique_ptr<Brick> m_brick;
 	Paddle m_paddle;
 	Ball m_ball;
+
+	//sprites
+	Sprite m_sprite;
 
 	//orthos
 
 
 	//lights
+
 
 	//render textures
 

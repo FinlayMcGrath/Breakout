@@ -11,6 +11,7 @@ BreakoutApp::BreakoutApp(HINSTANCE hinstance, HWND hwnd, int screenWidth, int sc
 
 	//load bricks from text file
 	m_bricks = m_file.Load("../bricks.txt");
+	m_brick = make_shared<Brick>(0.0f, 0.0f, 2);
 
 	//setup directx with gameobjects
 	for (auto brick : m_bricks)
@@ -19,7 +20,10 @@ BreakoutApp::BreakoutApp(HINSTANCE hinstance, HWND hwnd, int screenWidth, int sc
 	}
 	m_paddle.Initialise(m_direct3D, XMFLOAT3(0.0f, -25.0f, 70.0f));
 	m_ball.Initialise(m_direct3D, XMFLOAT3(0.0f, 0.0f, 70.0f));
-	
+	m_brick->Initialise(m_direct3D);
+
+	//setup sprites
+	m_sprite.Initialise(m_direct3D, Vector2(0.0f, 0.0f));
 }
 
 BreakoutApp::~BreakoutApp()
@@ -82,6 +86,8 @@ bool BreakoutApp::Update()
 
 	m_ball.Update(m_deltaTime);
 	m_paddle.Update(m_deltaTime);
+	m_sprite.Update(m_deltaTime);
+	m_brick->Update(m_deltaTime);
 
 	return true;
 }
@@ -93,14 +99,16 @@ bool BreakoutApp::Render()
 
 	// Render scene to buffer
 	RenderScene();
-	
+
+	RenderHUD();
+
 	return true;
 }
 
 //draw textured scene
 void BreakoutApp::RenderScene()
 {
-	XMMATRIX worldMatrix, viewMatrix, projectionMatrix;
+	XMMATRIX worldMatrix, viewMatrix, projectionMatrix, orthoMatrix;
 
 	m_direct3D->SetBackBufferRenderTarget();
 	m_direct3D->ResetViewport();
@@ -112,6 +120,8 @@ void BreakoutApp::RenderScene()
 	m_direct3D->GetWorldMatrix(worldMatrix);
 	m_camera->GetViewMatrix(viewMatrix);
 	m_direct3D->GetProjectionMatrix(projectionMatrix);
+	m_direct3D->GetOrthoMatrix(orthoMatrix);
+
 
 	//draw gameobjects
 	for (auto brick : m_bricks)
@@ -131,9 +141,26 @@ void BreakoutApp::RenderScene()
 	m_paddle.getMesh()->SendData(m_direct3D->GetDeviceContext());
 	m_textureShader->SetShaderParameters(m_direct3D->GetDeviceContext(), worldMatrix, viewMatrix, projectionMatrix, m_paddle.getMesh()->GetTexture());
 	m_textureShader->Render(m_direct3D->GetDeviceContext(), m_paddle.getMesh()->GetIndexCount());
+	
+	m_direct3D->TurnZBufferOff();
+
+	worldMatrix = m_brick->getMesh()->GetMatrix();
+	m_direct3D->GetWorldMatrix(worldMatrix);
+	
+	m_brick->getMesh()->SendData(m_direct3D->GetDeviceContext());
+	m_textureShader->SetShaderParameters(m_direct3D->GetDeviceContext(), worldMatrix, viewMatrix, projectionMatrix, m_brick->getMesh()->GetTexture());
+	m_textureShader->Render(m_direct3D->GetDeviceContext(), m_brick->getMesh()->GetIndexCount());
+
+	m_direct3D->TurnZBufferOn();
 
 	// Present the rendered scene to the screen.
 	m_direct3D->EndScene();
+}
+
+void BreakoutApp::RenderHUD()
+{
+	//2D rendering
+	//m_sprite.Render();
 }
 
 void BreakoutApp::HandleInput()
