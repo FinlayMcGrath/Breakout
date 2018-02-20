@@ -62,6 +62,16 @@ void BaseMesh::SendData(ID3D11DeviceContext* deviceContext)
 	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 }
 
+vector<BaseMesh::VertexType> BaseMesh::GetVertexValues()
+{
+	vector<VertexType> vertexValues;
+	for (int i = 0; i < 10000; i++)
+	{
+		vertexValues.push_back(m_vertices[i]);
+	}
+	return vertexValues;
+}
+
 void BaseMesh::LoadTexture(ID3D11Device* device, ID3D11DeviceContext* deviceContext, WCHAR* filename)
 {
 	// Create the texture object.

@@ -31,7 +31,7 @@ void SphereMesh::InitBuffers(ID3D11Device* device)
 	// Calculate vertex count
 	// 6 vertices per quad, res*res is face, times 6 for each face
 	// Set the number of vertices in the vertex array.
-	m_vertexCount = ((6 * m_resolution)*m_resolution) * 6;
+	m_vertexCount = ((6 * m_resolution) * m_resolution) * 6;
 
 	// Set the number of indices in the index array.
 	m_indexCount = m_vertexCount;
@@ -58,7 +58,7 @@ void SphereMesh::InitBuffers(ID3D11Device* device)
 
 	//front face
 
-	for (int y = 0; y<m_resolution; y++)	// for each quad in the y direction
+	for (int y = 0; y < m_resolution; y++)	// for each quad in the y direction
 	{
 		for (int x = 0; x < m_resolution; x++)	// for each quad in the x direction
 		{

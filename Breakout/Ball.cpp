@@ -18,7 +18,8 @@ Ball::~Ball()
 
 void Ball::Initialise(D3D * direct3D, XMFLOAT3 position)
 {
-	m_mesh = new SphereMesh(direct3D->GetDevice(), direct3D->GetDeviceContext(), L"../res/brick1.png");
+	//m_mesh = new SphereMesh(direct3D->GetDevice(), direct3D->GetDeviceContext(), L"../res/brick1.png");
+	m_mesh = new QuadMesh(direct3D->GetDevice(), direct3D->GetDeviceContext(), L"../res/brick1.png");
 	m_position = position;
 
 	GameObject::m_mesh = m_mesh;
@@ -28,6 +29,7 @@ void Ball::Initialise(D3D * direct3D, XMFLOAT3 position)
 
 bool Ball::Update(float deltaTime)
 {
+	m_oldPosition = m_position;
 	GameObject::Update(deltaTime);
 
 	//check screen bounds
@@ -57,11 +59,14 @@ bool Ball::Update(float deltaTime)
 
 void Ball::Hit(int colour = -1)
 {
+	vector<BaseMesh::VertexType> vert = m_mesh->GetVertexValues();
 	m_velocity.y *= -1;
 	SetColour(colour);
+	m_position = m_position;
 }
 
 void Ball::Hit()
 {
 	m_velocity.y *= -1;
+	m_position = m_position;
 }

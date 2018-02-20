@@ -183,41 +183,19 @@ void BreakoutApp::CheckCollisions()
 
 bool BreakoutApp::AabbCollide(GameObject object1, GameObject object2)
 {
-	//get the max and min of the bounding box
-	XMFLOAT3 firstmin = object1.GetAabb().min_vtx();
-	XMFLOAT3 firstmax = object1.GetAabb().max_vtx();
-	XMFLOAT3 secondmin = object2.GetAabb().min_vtx();
-	XMFLOAT3 secondmax = object2.GetAabb().max_vtx();
-
-	//calculate dimensions of object1
-	float firstwidth = firstmax.x - firstmin.x;
-	float firstheight = firstmax.y - firstmin.y;
-	float firstlength = firstmax.z - firstmin.z;
-
-	//calculate dimensions of object2
-	float secondwidth = secondmax.x - secondmin.x;
-	float secondheight = secondmax.y - secondmin.y;
-	float secondlength = secondmax.z - secondmin.z;
-
-	//if right side of object 1 is less than left side of object 2
 	//not checking for z bounding
-	if (object1.GetPosition().x + (firstwidth / 2) < object2.GetPosition().x - (secondwidth / 2))
+	//if right side of object 1 is less than left side of object 2
+	if (object1.GetAabb().max_vtx().x < object2.GetAabb().min_vtx().x)
 		return false;
 	//if left side of object 1 is greater than right side of object 2
-	if (object1.GetPosition().x - (firstwidth / 2) > object2.GetPosition().x + (secondwidth / 2))
+	if (object1.GetAabb().min_vtx().x > object2.GetAabb().max_vtx().x)
 		return false;
 	//if bottom side of object 1 is less than top side of object 2
-	if (object1.GetPosition().y + (firstheight / 2) < object2.GetPosition().y - (secondheight / 2))
+	if (object1.GetAabb().max_vtx().y < object2.GetAabb().min_vtx().y)
 		return false;
 	//if top side of object 1 is greater than bottom side of object 2
-	if (object1.GetPosition().y - (firstheight / 2) > object2.GetPosition().y + (secondheight / 2))
+	if (object1.GetAabb().min_vtx().y > object2.GetAabb().max_vtx().y)
 		return false;
-	//if front side of object 1 is less than back side of object 2
-	//if (object1.GetPosition().z + (firstlength / 2) < object2.GetPosition().z - (secondlength / 2))
-	//	return false;
-	//if back side of object 1 is less than front side of object 2
-	//if (object1.GetPosition().z - (firstlength / 2) > object2.GetPosition().z + (secondlength / 2))
-	//	return false;
 	return true;
 }
 

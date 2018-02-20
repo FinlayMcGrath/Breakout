@@ -1,2 +1,16 @@
-﻿  Breakout.vcxproj -> E:\Users\Finlay\Documents\Programming\Applications\Ninja Kiwi\Breakout\x64\Release\Breakout.exe
+﻿  Ball.cpp
+  BreakoutApp.cpp
+  Brick.cpp
+  File.cpp
+File.cpp(56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  GameObject.cpp
+  Main.cpp
+  Paddle.cpp
+  System.cpp
+  Generating code
+  44 of 623 functions ( 7.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    51 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Breakout.vcxproj -> E:\Users\Finlay\Documents\Programming\Applications\Ninja Kiwi\Breakout\x64\Release\Breakout.exe
   Breakout.vcxproj -> E:\Users\Finlay\Documents\Programming\Applications\Ninja Kiwi\Breakout\x64\Release\Breakout.pdb (Full PDB)

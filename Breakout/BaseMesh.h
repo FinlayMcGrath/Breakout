@@ -4,6 +4,7 @@
 #include <d3d11.h>
 #include <directxmath.h>
 #include <string>
+#include <vector>
 #include "texture.h"
 
 using namespace DirectX;
@@ -12,7 +13,7 @@ using namespace std;
 
 class BaseMesh
 {
-protected:
+public:
 
 	struct VertexType
 	{
@@ -21,7 +22,6 @@ protected:
 		XMFLOAT3 normal;
 	};
 
-public:
 	BaseMesh();
 	~BaseMesh();
 
@@ -38,6 +38,7 @@ public:
 	XMMATRIX GetMatrix() { return m_matrix; };
 	void SetMatrix(XMMATRIX matrix) { m_matrix = matrix; };
 	VertexType* GetVertices() { return m_vertices; };
+	vector<VertexType> GetVertexValues();
 protected:
 	virtual void InitBuffers(ID3D11Device*) = 0;
 	void LoadTexture(ID3D11Device*, ID3D11DeviceContext*, WCHAR*);

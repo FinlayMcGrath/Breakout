@@ -2,6 +2,7 @@
 
 #include "GameObject.h"
 #include "SphereMesh.h"
+#include "QuadMesh.h"
 
 class Ball : public GameObject
 {
@@ -13,9 +14,10 @@ public:
 	//setup directx
 	void Initialise(D3D* directx, XMFLOAT3 position);
 	bool Update(float deltaTime);
-	SphereMesh* getMesh() { return m_mesh; };
+	//SphereMesh* getMesh() { return m_mesh; };
+	QuadMesh* getMesh() { return m_mesh; };
 private:
-	SphereMesh* m_mesh;
+	QuadMesh* m_mesh;
 	Colour m_colourCode;
 	bool m_turning;
 };

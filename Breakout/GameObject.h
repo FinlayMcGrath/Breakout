@@ -23,12 +23,13 @@ public:
 	const Aabb& GetAabb() { return *m_aabb; };
 	const SphereMesh& GetBoundingSphere() { return *m_boundingSphere; };
 	XMFLOAT3 GetPosition() { return m_position; };
+	void SetPosition(XMFLOAT3 position) { m_position = position; };
 	XMMATRIX GetMatrix();
 	XMFLOAT4 GetColour() { return m_colour; };
 protected:
 	void SetAabbPoints();
 	BaseMesh* m_mesh;
-	XMFLOAT3 m_position, m_rotation, m_scale, m_velocity;
+	XMFLOAT3 m_position, m_rotation, m_scale, m_velocity, m_oldPosition;
 	Aabb* m_aabb;
 	SphereMesh* m_boundingSphere;
 	XMFLOAT4 m_colour;
