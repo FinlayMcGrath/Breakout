@@ -35,38 +35,52 @@ bool Ball::Update(float deltaTime)
 	//check screen bounds
 	if (m_position.x > HALF_SCREEN_SIZEX)
 	{
+		Hit();
 		m_velocity.x *= -1;
-		m_position.x = HALF_SCREEN_SIZEX;
+		m_velocity.y *= -1;
 	}
 	if (m_position.x < -HALF_SCREEN_SIZEX)
 	{
-		m_position.x = -HALF_SCREEN_SIZEX;
+		Hit();
 		m_velocity.x *= -1;
+		m_velocity.y *= -1;
 	}
 	if (m_position.y > HALF_SCREEN_SIZEY)
 	{
-		m_velocity.y *= -1;
-		m_position.y = HALF_SCREEN_SIZEY;
+		Hit();
 	}
 	if (m_position.y < -HALF_SCREEN_SIZEY)
 	{
-		m_position.y = -HALF_SCREEN_SIZEY;
-		m_velocity.y *= -1;
+		Hit();
 	}
 
 	return true;
 }
 
-void Ball::Hit(int colour = -1)
+void Ball::Hit(int colour)
 {
 	vector<BaseMesh::VertexType> vert = m_mesh->GetVertexValues();
 	m_velocity.y *= -1;
 	SetColour(colour);
-	m_position = m_position;
+
+	XMFLOAT3 deltaPosition;
+	deltaPosition.x = m_oldPosition.x - m_position.x;
+	deltaPosition.y = m_oldPosition.y - m_position.y;
+	deltaPosition.z = m_oldPosition.z - m_position.z;
+	m_aabb->Update(deltaPosition);
+
+	m_position = m_oldPosition;
 }
 
 void Ball::Hit()
 {
+	XMFLOAT3 deltaPosition;
+
+	deltaPosition.x = m_oldPosition.x - m_position.x;
+	deltaPosition.y = m_oldPosition.y - m_position.y;
+	deltaPosition.z = m_oldPosition.z - m_position.z;
+	m_aabb->Update(deltaPosition);
+
+	m_position = m_oldPosition;
 	m_velocity.y *= -1;
-	m_position = m_position;
 }

@@ -34,6 +34,10 @@ bool GameObject::Update(float deltaTime)
 
 	m_aabb->Update(deltaPosition);
 
+	if (m_aabb->m_position.x != m_position.x)
+	{
+		deltaPosition.x += 1;
+	}
 	return true;
 }
 
@@ -58,7 +62,7 @@ void GameObject::SetAabbPoints()
 		transform.z = m_mesh->GetVertices()[i].position.z * m_scale.z;
 		m_aabb->AddPoint(transform);
 	}
-	delete m_mesh->GetVertices();
+	//delete m_mesh->GetVertices();
 	m_aabb->Update(m_position);
 }
 

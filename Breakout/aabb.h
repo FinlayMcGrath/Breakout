@@ -13,10 +13,11 @@ public:
 	void Update(XMFLOAT3 deltaPosition);
 	void AddPoint(XMFLOAT3 point);
 	void set_min_vtx(XMFLOAT3 minVertex) { m_minVertex = minVertex; };
-	const XMFLOAT3 min_vtx() const { return m_minVertex; };
+	XMFLOAT3 min_vtx();
 	void set_max_vtx(XMFLOAT3 maxVertex) { m_maxVertex = maxVertex; };
-	const XMFLOAT3 max_vtx() const { return m_maxVertex; };
+	XMFLOAT3 max_vtx();
+	XMFLOAT3 m_position;
 private:
 	/// Minimum bounds.
-	XMFLOAT3 m_minVertex, m_maxVertex, m_vertices[8];;
+	XMFLOAT3 m_minVertex, m_maxVertex, m_vertices[8];
 };

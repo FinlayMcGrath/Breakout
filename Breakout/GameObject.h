@@ -20,7 +20,7 @@ public:
 	virtual void Initialise();
 	void SetColour(int colour);
 	void SetVelocity(XMFLOAT3 velocity) { m_velocity = velocity; };
-	const Aabb& GetAabb() { return *m_aabb; };
+	Aabb& GetAabb() { return *m_aabb; };
 	const SphereMesh& GetBoundingSphere() { return *m_boundingSphere; };
 	XMFLOAT3 GetPosition() { return m_position; };
 	void SetPosition(XMFLOAT3 position) { m_position = position; };
